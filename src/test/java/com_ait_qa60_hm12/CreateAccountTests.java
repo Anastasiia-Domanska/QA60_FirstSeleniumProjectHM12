@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class CreateAccountTests extends TestBase{
 
-    @Test()
+    @Test
     public void newUserRegistrationPositiveTest(){
         click(By.cssSelector("[href='/register']"));
         //click(By.cssSelector("//input[@value='Register']"));
