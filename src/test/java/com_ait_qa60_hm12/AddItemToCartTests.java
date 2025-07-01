@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AddItemToCartTests extends TestBase{
+
     @Test
     public void addSecondItemToCartTest(){
         click(By.cssSelector("[href='/login']"));
@@ -18,7 +19,11 @@ public class AddItemToCartTests extends TestBase{
         WebElement successBar = driver.findElement(By.cssSelector(".content"));
         String successText = successBar.getText().toLowerCase();
 
-        Assert.assertTrue(successText.contains("The product has been added to your shopping cart".toLowerCase()),
-                "Товар не был добавлен в корзину");
+        assertElementPresent(By.xpath("//a[@class='product-name' and normalize-space()='14.1-inch Laptop']"),
+                "14.1-inch Laptop' is not displayed");
+    }
+
+    public void assertElementPresent(By locator, String message) {
+        Assert.assertTrue(isElementPresent(locator), message);
     }
 }
